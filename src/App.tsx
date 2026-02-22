@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText } from 'lucide-react';
 import { translations, Language } from './translations';
 
 function App() {
@@ -124,12 +124,22 @@ function App() {
               <p className="text-lg text-gray-600 mb-8 max-w-lg">
                 {t.home.description}
               </p>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
-              >
-                {t.home.cta}
-              </button>
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                >
+                  {t.home.cta}
+                </button>
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors border-2 border-gray-900"
+                >
+                  <FileText size={20} />
+                  {t.home.cvDownload}
+                </a>
+              </div>
             </div>
 
             <div className="flex justify-center">

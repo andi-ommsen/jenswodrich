@@ -14,6 +14,7 @@ interface Translations {
     title: string;
     description: string;
     cta: string;
+    cvDownload: string;
     photoAlt: string;
   };
   about: {
@@ -79,6 +80,7 @@ export const translations: Record<Language, Translations> = {
       description:
         'Ich bin ein erfahrener Software-Ingenieur, der sich auf die Entwicklung skalierbarer und zuverlässiger Backend-Systeme konzentriert.',
       cta: 'Kontakt aufnehmen',
+      cvDownload: 'Lebenslauf herunterladen',
       photoAlt: 'Professionelles Foto',
     },
     about: {
@@ -181,6 +183,7 @@ export const translations: Record<Language, Translations> = {
       description:
         "I'm an experienced software engineer focused on building scalable and reliable backend systems.",
       cta: 'Get In Touch',
+      cvDownload: 'Download CV',
       photoAlt: 'Professional Photo',
     },
     about: {
