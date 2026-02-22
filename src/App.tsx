@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText, User, FolderOpen, Wrench } from 'lucide-react';
 import { translations, Language } from './translations';
 
 function App() {
@@ -156,7 +156,10 @@ function App() {
 
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12">{t.about.heading}</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12 flex items-center gap-4">
+            <User size={40} className="text-green-400" />
+            {t.about.heading}
+          </h2>
 
           <div className="bg-slate-950 rounded-2xl p-8 sm:p-12 font-mono text-sm sm:text-base overflow-x-auto shadow-2xl border border-slate-700">
             <pre className="text-green-400">
@@ -189,7 +192,10 @@ function App() {
 
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-100 via-purple-100 to-slate-200">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12">{t.projects.heading}</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 flex items-center gap-4">
+            <FolderOpen size={40} className="text-purple-700" />
+            {t.projects.heading}
+          </h2>
 
           <div className="bg-white rounded-2xl p-8 sm:p-12 font-mono text-sm sm:text-base overflow-x-auto shadow-2xl border border-purple-200">
             <pre className="text-purple-700">
@@ -212,7 +218,10 @@ ${project.technologies.map(tech => `      <tech>${tech}</tech>`).join('\n')}
 
       <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12">{t.skills.heading}</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 flex items-center gap-4">
+            <Wrench size={40} className="text-blue-600" />
+            {t.skills.heading}
+          </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-blue-100">
