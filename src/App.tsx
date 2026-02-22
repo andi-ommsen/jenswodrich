@@ -125,7 +125,7 @@ function App() {
                   {t.home.cta}
                 </button>
                 <a
-                  href="/cv.pdf"
+                  href={t.home.cvFile}
                   download
                   className={styles.secondaryButton}
                 >

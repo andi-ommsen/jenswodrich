@@ -346,8 +346,8 @@
 }
 
 .imageFrame {
-  width: 16rem;
-  height: 16rem;
+  width: 20rem;
+  height: 30rem;
   border-radius: 1rem;
   overflow: hidden;
   background-color: #e5e7eb;

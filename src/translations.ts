@@ -14,6 +14,7 @@ interface Translations {
     title: string;
     description: string;
     cta: string;
+    cvFile: string;
     cvDownload: string;
     photoAlt: string;
   };
@@ -80,6 +81,7 @@ export const translations: Record<Language, Translations> = {
       description:
         'Ich bin ein erfahrener Software-Ingenieur, der sich auf die Entwicklung skalierbarer und zuverlässiger Backend-Systeme konzentriert. Programmieren ist lebenslanges Lernen. Diese Aussage bildet für mich gleichzeitig die Freude und den Schmerz an meiner Berufung ab. Ich könnte mir nichts Besseres vorstellen.',
       cta: 'Kontakt aufnehmen',
+      cvFile: '/cv/de_cv.pdf',
       cvDownload: 'Lebenslauf herunterladen',
       photoAlt: 'Professionelles Foto',
     },
@@ -183,6 +185,7 @@ export const translations: Record<Language, Translations> = {
       description:
         "I'm an experienced software engineer focused on building scalable and reliable backend systems. Programming is lifelong learning. This statement reflects both the joy and the pain of my vocation for me. I couldn't imagine anything better.",
       cta: 'Get In Touch',
+      cvFile: '/cv/en_cv.pdf',
       cvDownload: 'Download CV',
       photoAlt: 'Professional Photo',
     },
