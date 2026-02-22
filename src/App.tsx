@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText, User, FolderOpen, Wrench } from 'lucide-react';
 import { translations, Language } from './translations';
+import styles from './App.module.css';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,47 +42,43 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="text-xl sm:text-2xl font-bold text-gray-900">
+    <div className={styles.container}>
+      <nav className={styles.nav}>
+        <div className={styles.navContainer}>
+          <div className={styles.navContent}>
+            <div className={styles.logo}>
               jenswodrich.de
             </div>
 
-            <div className="hidden md:flex items-center space-x-8">
+            <div className={styles.desktopMenu}>
               {(['home', 'about', 'projects', 'skills', 'contact'] as const).map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`font-medium transition-colors ${
-                    activeSection === section
-                      ? 'text-blue-600'
-                      : 'text-gray-600 hover:text-blue-600'
-                  }`}
+                  className={`${styles.navButton} ${activeSection === section ? styles.active : ''}`}
                 >
                   {t.nav[section]}
                 </button>
               ))}
               <button
                 onClick={() => setLanguage(language === 'de' ? 'en' : 'de')}
-                className="flex items-center gap-1 text-gray-600 hover:text-blue-600 font-medium transition-colors"
+                className={styles.languageButton}
               >
                 <Globe size={18} />
                 {language.toUpperCase()}
               </button>
             </div>
 
-            <div className="md:hidden flex items-center gap-2">
+            <div className={styles.mobileControls}>
               <button
                 onClick={() => setLanguage(language === 'de' ? 'en' : 'de')}
-                className="flex items-center gap-1 p-2 text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm"
+                className={styles.languageButtonMobile}
               >
                 <Globe size={18} />
                 {language.toUpperCase()}
               </button>
               <button
-                className="p-2 text-gray-600 hover:text-blue-600"
+                className={styles.menuButton}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,17 +88,13 @@ function App() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-4 py-4 space-y-3">
+          <div className={styles.mobileMenu}>
+            <div className={styles.mobileMenuContent}>
               {(['home', 'about', 'projects', 'skills', 'contact'] as const).map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`block w-full text-left px-4 py-2 font-medium rounded-lg transition-colors ${
-                    activeSection === section
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-600 hover:bg-gray-50'
-                  }`}
+                  className={`${styles.mobileNavButton} ${activeSection === section ? styles.active : ''}`}
                 >
                   {t.nav[section]}
                 </button>
@@ -111,30 +104,30 @@ function App() {
         )}
       </nav>
 
-      <section id="home" className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section id="home" className={styles.homeSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.homeGrid}>
             <div>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-4">
+              <h1 className={styles.homeTitle}>
                 {t.home.greeting} {t.home.name.split(' ')[0]}<br />{t.home.name.split(' ')[1]}
               </h1>
-              <h2 className="text-3xl sm:text-4xl font-semibold text-gray-700 mb-6">
+              <h2 className={styles.homeSubtitle}>
                 {t.home.title}
               </h2>
-              <p className="text-lg text-gray-600 mb-8 max-w-lg">
+              <p className={styles.homeDescription}>
                 {t.home.description}
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className={styles.homeActions}>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                  className={styles.primaryButton}
                 >
                   {t.home.cta}
                 </button>
                 <a
                   href="/cv.pdf"
                   download
-                  className="flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors border-2 border-gray-900"
+                  className={styles.secondaryButton}
                 >
                   <FileText size={20} />
                   {t.home.cvDownload}
@@ -142,14 +135,13 @@ function App() {
               </div>
             </div>
 
-            <div className="flex justify-center">
-              <div className="w-80 h-80 bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl shadow-2xl flex items-center justify-center">
-                <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className={styles.imageContainer}>
+              <div className={styles.imageWrapper}>
+                <div className={styles.imageInner}>
                   <div
-                    className="w-64 h-64 rounded-2xl overflow-hidden bg-gray-200 flex items-center justify-center shadow-lg"
+                    className={styles.imageFrame}
                     style={{ backgroundImage: 'url(/public/images/jens-wodrich-2024.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >
-                    {/* Optional: Icon overlay */}
                   </div>
                 </div>
               </div>
@@ -158,15 +150,15 @@ function App() {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-800 to-slate-900">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12 flex items-center gap-4">
+      <section id="about" className={styles.aboutSection}>
+        <div className={styles.sectionContainer}>
+          <h2 className={`${styles.sectionHeading} ${styles.aboutHeading}`}>
             <User size={40} className="text-green-400" />
             {t.about.heading}
           </h2>
 
-          <div className="bg-slate-950 rounded-2xl p-8 sm:p-12 font-mono text-sm sm:text-base overflow-x-auto shadow-2xl border border-slate-700">
-            <pre className="text-green-400">
+          <div className={styles.codeBlock}>
+            <pre className={styles.codeBlockGreen}>
               <code>{`{
   "name": "${t.about.name}",
   "role": "${t.about.role}",
@@ -194,15 +186,15 @@ function App() {
         </div>
       </section>
 
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-100 via-purple-100 to-slate-200">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 flex items-center gap-4">
+      <section id="projects" className={styles.projectsSection}>
+        <div className={styles.sectionContainer}>
+          <h2 className={`${styles.sectionHeading} ${styles.projectsHeading}`}>
             <FolderOpen size={40} className="text-purple-700" />
             {t.projects.heading}
           </h2>
 
-          <div className="bg-white rounded-2xl p-8 sm:p-12 font-mono text-sm sm:text-base overflow-x-auto shadow-2xl border border-purple-200">
-            <pre className="text-purple-700">
+          <div className={styles.projectsCodeBlock}>
+            <pre className={styles.projectsCode}>
               <code>{`<projects>
 ${t.projects.items.map((project, index) => `  <project id="${index + 1}">
     <title>${project.title}</title>
@@ -220,50 +212,50 @@ ${project.technologies.map(tech => `      <tech>${tech}</tech>`).join('\n')}
         </div>
       </section>
 
-      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 flex items-center gap-4">
+      <section id="skills" className={styles.skillsSection}>
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.sectionHeading}>
             <Wrench size={40} className="text-blue-600" />
             {t.skills.heading}
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-blue-100">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Code2 className="text-blue-600" size={24} />
+          <div className={styles.skillsGrid}>
+            <div className={`${styles.skillCard} ${styles.skillCardBlue}`}>
+              <div className={`${styles.skillIcon} ${styles.skillIconBlue}`}>
+                <Code2 size={24} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{t.skills.cards[0].title}</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className={styles.skillTitle}>{t.skills.cards[0].title}</h3>
+              <p className={styles.skillDescription}>
                 {t.skills.cards[0].description}
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-purple-100">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Database className="text-purple-600" size={24} />
+            <div className={`${styles.skillCard} ${styles.skillCardPurple}`}>
+              <div className={`${styles.skillIcon} ${styles.skillIconPurple}`}>
+                <Database size={24} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{t.skills.cards[1].title}</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className={styles.skillTitle}>{t.skills.cards[1].title}</h3>
+              <p className={styles.skillDescription}>
                 {t.skills.cards[1].description}
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-indigo-100">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <Server className="text-indigo-600" size={24} />
+            <div className={`${styles.skillCard} ${styles.skillCardIndigo}`}>
+              <div className={`${styles.skillIcon} ${styles.skillIconIndigo}`}>
+                <Server size={24} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{t.skills.cards[2].title}</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className={styles.skillTitle}>{t.skills.cards[2].title}</h3>
+              <p className={styles.skillDescription}>
                 {t.skills.cards[2].description}
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-200">
-              <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
-                <Globe className="text-slate-600" size={24} />
+            <div className={`${styles.skillCard} ${styles.skillCardSlate}`}>
+              <div className={`${styles.skillIcon} ${styles.skillIconSlate}`}>
+                <Globe size={24} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{t.skills.cards[3].title}</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className={styles.skillTitle}>{t.skills.cards[3].title}</h3>
+              <p className={styles.skillDescription}>
                 {t.skills.cards[3].description}
               </p>
             </div>
@@ -271,17 +263,17 @@ ${project.technologies.map(tech => `      <tech>${tech}</tech>`).join('\n')}
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-800 to-slate-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">{t.contact.heading}</h2>
-          <p className="text-xl text-gray-300 mb-12">
+      <section id="contact" className={styles.contactSection}>
+        <div className={styles.contactContainer}>
+          <h2 className={styles.contactHeading}>{t.contact.heading}</h2>
+          <p className={styles.contactSubtitle}>
             {t.contact.subtitle}
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
+          <div className={styles.contactLinks}>
             <a
               href="mailto:jens@jenswodrich.de"
-              className="flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+              className={`${styles.contactLink} ${styles.contactLinkEmail}`}
             >
               <Mail size={20} />
               {t.contact.email}
@@ -290,7 +282,7 @@ ${project.technologies.map(tech => `      <tech>${tech}</tech>`).join('\n')}
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              className={`${styles.contactLink} ${styles.contactLinkLinkedin}`}
             >
               <Linkedin size={20} />
               {t.contact.linkedin}
@@ -299,15 +291,15 @@ ${project.technologies.map(tech => `      <tech>${tech}</tech>`).join('\n')}
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gray-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-600 transition-colors"
+              className={`${styles.contactLink} ${styles.contactLinkGithub}`}
             >
               <Github size={20} />
               {t.contact.github}
             </a>
           </div>
 
-          <div className="bg-slate-950 rounded-xl p-8 font-mono text-sm text-left overflow-x-auto border border-slate-700">
-            <pre className="text-cyan-400">
+          <div className={styles.contactCodeBlock}>
+            <pre className={styles.contactCode}>
               <code>{`const contact = {
   email: "jens@jenswodrich.de",
   location: "${t.about.location}",
@@ -321,9 +313,9 @@ ${t.contact.codeComment}`}</code>
         </div>
       </section>
 
-      <footer className="bg-slate-950 text-gray-400 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-sm">
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <p className={styles.footerText}>
             {t.footer.copyright}
           </p>
         </div>
