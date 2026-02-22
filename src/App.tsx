@@ -67,7 +67,7 @@ function App() {
                 onClick={() => setLanguage(language === 'de' ? 'en' : 'de')}
                 className="flex items-center gap-1 text-gray-600 hover:text-blue-600 font-medium transition-colors"
               >
-                <Languages size={18} />
+                <Globe size={18} />
                 {language.toUpperCase()}
               </button>
             </div>
@@ -77,7 +77,7 @@ function App() {
                 onClick={() => setLanguage(language === 'de' ? 'en' : 'de')}
                 className="flex items-center gap-1 p-2 text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm"
               >
-                <Languages size={18} />
+                <Globe size={18} />
                 {language.toUpperCase()}
               </button>
               <button
