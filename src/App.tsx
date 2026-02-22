@@ -144,9 +144,13 @@ function App() {
 
             <div className="flex justify-center">
               <div className="w-80 h-80 bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl shadow-2xl flex items-center justify-center">
-                <div className="text-gray-500 text-center">
-                  <Code2 size={80} strokeWidth={1.5} />
-                  <p className="mt-4 text-sm">{t.home.photoAlt}</p>
+                <div className="w-full h-full flex flex-col items-center justify-center">
+                  <div
+                    className="w-64 h-64 rounded-2xl overflow-hidden bg-gray-200 flex items-center justify-center shadow-lg"
+                    style={{ backgroundImage: 'url(/public/images/jens-wodrich-2024.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+                  >
+                    {/* Optional: Icon overlay */}
+                  </div>
                 </div>
               </div>
             </div>

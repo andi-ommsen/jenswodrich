@@ -76,9 +76,9 @@ export const translations: Record<Language, Translations> = {
     home: {
       greeting: 'Hallo, ich bin',
       name: 'Jens Wodrich.',
-      title: 'Software Engineer',
+      title: 'Software Entwickler',
       description:
-        'Ich bin ein erfahrener Software-Ingenieur, der sich auf die Entwicklung skalierbarer und zuverlässiger Backend-Systeme konzentriert.',
+        'Ich bin ein erfahrener Software-Ingenieur, der sich auf die Entwicklung skalierbarer und zuverlässiger Backend-Systeme konzentriert. Programmieren ist lebenslanges Lernen. Diese Aussage bildet für mich gleichzeitig die Freude und den Schmerz an meiner Berufung ab. Ich könnte mir nichts Besseres vorstellen.',
       cta: 'Kontakt aufnehmen',
       cvDownload: 'Lebenslauf herunterladen',
       photoAlt: 'Professionelles Foto',
@@ -86,10 +86,10 @@ export const translations: Record<Language, Translations> = {
     about: {
       heading: 'Über mich',
       name: 'Jens Wodrich',
-      role: 'Software Engineer',
-      location: 'Berlin, Deutschland',
+      role: 'Software Entwickler',
+      location: 'Hamburg, Deutschland',
       experience: {
-        years: '10+',
+        years: '20+',
         focus: [
           'Backend-Entwicklung',
           'Systemarchitektur',
@@ -98,9 +98,9 @@ export const translations: Record<Language, Translations> = {
         ],
       },
       expertise: {
-        languages: ['JavaScript', 'TypeScript', 'Python', 'Java'],
-        technologies: ['Node.js', 'React', 'PostgreSQL', 'Docker'],
-        clouds: ['AWS', 'Google Cloud', 'Azure'],
+        languages: ['PHP', 'Go', 'JavaScript'],
+        technologies: ['Symfony','Laravel','PostgreSQL','Docker'],
+        clouds: ['Google Cloud'],
         methodologies: ['Agile', 'Microservices', 'CI/CD'],
       },
       passion: 'Entwicklung robuster und skalierbarer Lösungen',
@@ -181,7 +181,7 @@ export const translations: Record<Language, Translations> = {
       name: 'Jens Wodrich.',
       title: 'Software Engineer',
       description:
-        "I'm an experienced software engineer focused on building scalable and reliable backend systems.",
+        "I'm an experienced software engineer focused on building scalable and reliable backend systems. Programming is lifelong learning. This statement reflects both the joy and the pain of my vocation for me. I couldn't imagine anything better.",
       cta: 'Get In Touch',
       cvDownload: 'Download CV',
       photoAlt: 'Professional Photo',
@@ -190,20 +190,19 @@ export const translations: Record<Language, Translations> = {
       heading: 'About Me',
       name: 'Jens Wodrich',
       role: 'Software Engineer',
-      location: 'Berlin, Germany',
+      location: 'Hamburg, Germany',
       experience: {
-        years: '10+',
+        years: '20+',
         focus: [
           'Backend Development',
           'System Architecture',
-          'Cloud Infrastructure',
           'Database Design',
         ],
       },
       expertise: {
-        languages: ['JavaScript', 'TypeScript', 'Python', 'Java'],
-        technologies: ['Node.js', 'React', 'PostgreSQL', 'Docker'],
-        clouds: ['AWS', 'Google Cloud', 'Azure'],
+        languages: ['PHP', 'Go', 'JavaScript'],
+        technologies: ['Symfony','Laravel','PostgreSQL','Docker'],
+        clouds: ['Google Cloud'],
         methodologies: ['Agile', 'Microservices', 'CI/CD'],
       },
       passion: 'Building robust and scalable solutions',
