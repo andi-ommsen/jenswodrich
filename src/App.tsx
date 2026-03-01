@@ -189,7 +189,7 @@ function App() {
       <section id="projects" className={styles.projectsSection}>
         <div className={styles.sectionContainer}>
           <h2 className={`${styles.sectionHeading} ${styles.projectsHeading}`}>
-            <FolderOpen size={40} className="text-purple-700" />
+            <FolderOpen size={40} className="text-purple-400" />
             {t.projects.heading}
           </h2>
 
