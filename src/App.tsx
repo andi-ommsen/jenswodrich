@@ -189,25 +189,33 @@ function App() {
       <section id="projects" className={styles.projectsSection}>
         <div className={styles.sectionContainer}>
           <h2 className={`${styles.sectionHeading} ${styles.projectsHeading}`}>
-            <FolderOpen size={40} className="text-purple-700" />
+            <FolderOpen size={40} />
             {t.projects.heading}
           </h2>
 
-          <div className={styles.projectsCodeBlock}>
-            <pre className={styles.projectsCode}>
-              <code>{`<projects>
-${t.projects.items.map((project, index) => `  <project id="${index + 1}">
-    <title>${project.title}</title>
-    <description>
-      ${project.description}
-    </description>
-    <technologies>
-${project.technologies.map(tech => `      <tech>${tech}</tech>`).join('\n')}
-    </technologies>
-    <impact>${project.impact}</impact>
-  </project>`).join('\n\n')}
-</projects>`}</code>
-            </pre>
+          <div className={styles.projectsGrid}>
+            {t.projects.items.map((project, index) => (
+              <div key={index} className={styles.projectCard}>
+                <div className={styles.projectHeader}>
+                  <Code2 className={styles.projectIcon} size={28} />
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                </div>
+                <p className={styles.projectDescription}>
+                  {project.description}
+                </p>
+                <div className={styles.projectTechnologies}>
+                  {project.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className={styles.techBadge}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className={styles.projectImpact}>
+                  <span className={styles.impactLabel}>Impact:</span>
+                  <span className={styles.impactText}>{project.impact}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
