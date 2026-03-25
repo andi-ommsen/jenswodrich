@@ -119,7 +119,7 @@ function App() {
           <div className={styles.homeGrid}>
             <div>
               <h1 className={styles.homeTitle}>
-                {t.home.greeting} {t.home.name}
+                {t.home.name}
               </h1>
               <h2 className={styles.homeSubtitle}>
                 {t.home.title}
