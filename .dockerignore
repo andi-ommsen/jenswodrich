@@ -1,0 +1,25 @@
+# Git
+.git
+.github
+.gitignore
+
+# Node dependencies (werden im Container neu installiert)
+node_modules
+
+# Vite build output (wird im Container gebaut)
+dist
+
+# Env-Dateien
+.env*.local
+.env.prod
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+.bolt/
+
+# Logs
+*.log
