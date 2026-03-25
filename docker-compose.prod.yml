@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: docker/nginx/Dockerfile.prod
     ports:
-      - "127.0.0.1:8080:80"   # nur localhost – SSL läuft über Host-Nginx
+      - "127.0.0.1:8081:80"   # nur localhost – SSL läuft über Host-Nginx
     networks:
       - jenswodrich-network
     restart: unless-stopped
