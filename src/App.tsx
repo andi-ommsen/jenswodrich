@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText, User, FolderOpen, Wrench } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText, User, Briefcase, Wrench } from 'lucide-react';
 import { translations, Language } from './translations';
 import styles from './App.module.css';
 
@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'skills', 'contact'];
+      const sections = ['home', 'about', 'projects', 'skills', 'diverses', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -51,7 +51,7 @@ function App() {
             </div>
 
             <div className={styles.desktopMenu}>
-              {(['home', 'about', 'projects', 'skills', 'contact'] as const).map((section) => (
+              {(['home', 'about', 'projects', 'skills', 'diverses', 'contact'] as const).map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -90,7 +90,7 @@ function App() {
         {isMenuOpen && (
           <div className={styles.mobileMenu}>
             <div className={styles.mobileMenuContent}>
-              {(['home', 'about', 'projects', 'skills', 'contact'] as const).map((section) => (
+              {(['home', 'about', 'projects', 'skills', 'diverses', 'contact'] as const).map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -189,31 +189,40 @@ function App() {
       <section id="projects" className={styles.projectsSection}>
         <div className={styles.sectionContainer}>
           <h2 className={`${styles.sectionHeading} ${styles.projectsHeading}`}>
-            <FolderOpen size={40} />
+            <Briefcase size={40} />
             {t.projects.heading}
           </h2>
 
           <div className={styles.projectsGrid}>
-            {t.projects.items.map((project, index) => (
+            {t.projects.items.map((station, index) => (
               <div key={index} className={styles.projectCard}>
                 <div className={styles.projectHeader}>
-                  <Code2 className={styles.projectIcon} size={28} />
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <Briefcase className={styles.projectIcon} size={28} />
+                  <div>
+                    <h3 className={styles.projectTitle}>{station.company}</h3>
+                    <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.125rem' }}>
+                      {station.period}
+                    </p>
+                  </div>
                 </div>
-                <p className={styles.projectDescription}>
-                  {project.description}
-                </p>
-                <div className={styles.projectTechnologies}>
-                  {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className={styles.techBadge}>
-                      {tech}
-                    </span>
+                <p className={styles.projectDescription}>{station.role}</p>
+                <ul style={{ listStyle: 'none', padding: 0, marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
+                  {station.projects.map((proj, projIndex) => (
+                    <li key={projIndex}>
+                      <p style={{ fontSize: '0.875rem', fontWeight: 600, color: '#374151', marginBottom: '0.125rem' }}>
+                        {proj.name}
+                      </p>
+                      <p style={{ fontSize: '0.8125rem', color: '#6b7280', marginBottom: '0.25rem' }}>
+                        {proj.description}
+                      </p>
+                      <div className={styles.projectTechnologies}>
+                        {proj.technologies.map((tech, techIndex) => (
+                          <span key={techIndex} className={styles.techBadge}>{tech}</span>
+                        ))}
+                      </div>
+                    </li>
                   ))}
-                </div>
-                <div className={styles.projectImpact}>
-                  <span className={styles.impactLabel}>Impact:</span>
-                  <span className={styles.impactText}>{project.impact}</span>
-                </div>
+                </ul>
               </div>
             ))}
           </div>
@@ -271,6 +280,22 @@ function App() {
         </div>
       </section>
 
+      <section id="diverses" className={styles.diversesSection}>
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.sectionHeading}>
+            {t.diverses.heading}
+          </h2>
+          <div className={styles.diversesGrid}>
+            {t.diverses.items.map((item, index) => (
+              <div key={index} className={styles.diversesItem}>
+                <span className={styles.diversesEmoji}>{item.emoji}</span>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className={styles.contactSection}>
         <div className={styles.contactContainer}>
           <h2 className={styles.contactHeading}>{t.contact.heading}</h2>
@@ -280,14 +305,14 @@ function App() {
 
           <div className={styles.contactLinks}>
             <a
-              href="mailto:jens@jenswodrich.de"
+              href="mailto:info@jenswodrich.de"
               className={`${styles.contactLink} ${styles.contactLinkEmail}`}
             >
               <Mail size={20} />
               {t.contact.email}
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jens-wodrich-3446a7102/"
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.contactLink} ${styles.contactLinkLinkedin}`}
@@ -309,7 +334,7 @@ function App() {
           <div className={styles.contactCodeBlock}>
             <pre className={styles.contactCode}>
               <code>{`const contact = {
-  email: "jens@jenswodrich.de",
+  email: "info@jenswodrich.de",
   location: "${t.about.location}",
   available: true,
   preferredContact: "email"

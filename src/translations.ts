@@ -6,6 +6,7 @@ interface Translations {
     about: string;
     projects: string;
     skills: string;
+    diverses: string;
     contact: string;
   };
   home: {
@@ -38,10 +39,14 @@ interface Translations {
   projects: {
     heading: string;
     items: Array<{
-      title: string;
-      description: string;
-      technologies: string[];
-      impact: string;
+      company: string;
+      period: string;
+      role: string;
+      projects: Array<{
+        name: string;
+        description: string;
+        technologies: string[];
+      }>;
     }>;
   };
   skills: {
@@ -49,6 +54,13 @@ interface Translations {
     cards: Array<{
       title: string;
       description: string;
+    }>;
+  };
+  diverses: {
+    heading: string;
+    items: Array<{
+      emoji: string;
+      label: string;
     }>;
   };
   contact: {
@@ -69,8 +81,9 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: 'Start',
       about: 'Über mich',
-      projects: 'Projekte',
+      projects: 'Berufliche Stationen',
       skills: 'Kompetenzen',
+      diverses: 'Diverses',
       contact: 'Kontakt',
     },
     home: {
@@ -107,52 +120,71 @@ export const translations: Record<Language, Translations> = {
       availability: 'Offen für neue Möglichkeiten',
     },
     projects: {
-      heading: 'Projekte',
+      heading: 'Berufliche Stationen',
       items: [
         {
-          title: 'E-Commerce-Plattform',
-          description:
-            'Backend-Entwicklung für eine groß angelegte E-Commerce-Plattform mit über 1 Million täglichen Transaktionen',
-          technologies: ['Node.js', 'PostgreSQL', 'Redis', 'Kubernetes'],
-          impact: 'Systemleistung um 300% verbessert',
+          company: 'E-Kontor24 / Skon AG',
+          period: '07.2018 – heute',
+          role: 'Backendentwickler',
+          projects: [
+            { name: 'praemienkontor.de – REST-API', description: 'Entwicklung einer Backend-Api auf Basis von Symfony. Weiterentwicklung geforderter Features.', technologies: ['Symfony', 'PHP', 'PostgreSQL', 'Docker'] },
+            { name: 'Point of Sale Tool', description: 'Entwicklung der Backend-Api in Go lang.', technologies: ['Go', 'PostgreSQL', 'Docker'] },
+            { name: 'Internes Tracking-Tool', description: 'Entwicklung einer Backend-Api auf Basis von Laravel.', technologies: ['Laravel', 'PHP', 'MySQL', 'Docker'] },
+          ],
         },
         {
-          title: 'Zahlungsverarbeitungssystem',
-          description:
-            'Microservices-Architektur für sichere Zahlungsabwicklung mit Echtzeit-Betrugserkennung',
-          technologies: ['Java', 'Spring Boot', 'Apache Kafka', 'MongoDB'],
-          impact: 'Über 50 Mio. € an Transaktionen verarbeitet',
+          company: 'Body Attack Sports Nutrition',
+          period: '07.2012 – 07.2018',
+          role: 'Webentwickler',
+          projects: [
+            { name: 'body-attack.de Online Shop', description: 'Entwicklung eines Shop und Kundensystems in PHP, HTML, CSS.', technologies: ['PHP', 'HTML', 'CSS', 'MySQL'] },
+            { name: 'Intranet', description: 'Weiterentwicklung des Intranets in ColdFusion.', technologies: ['ColdFusion'] },
+            { name: 'Lagerverwaltungssoftware', description: 'Entwicklung eines Lagerverwaltungs- und Logistiksystems in PHP.', technologies: ['PHP', 'MySQL'] },
+          ],
         },
         {
-          title: 'Cloud-Migrationsprojekt',
-          description:
-            'Migration von Legacy-Systemen in die Cloud-Infrastruktur mit Zero-Downtime-Deployment-Strategie',
-          technologies: ['AWS', 'Docker', 'Terraform', 'Jenkins'],
-          impact: 'Infrastrukturkosten um 40% reduziert',
+          company: 'Selbstständig',
+          period: '2006 – 06.2012',
+          role: 'Webentwickler & IT-Trainer',
+          projects: [
+            { name: 'Webentwicklung', description: 'Webseitenkonzeption und -erstellung.', technologies: ['PHP', 'HTML', 'CSS'] },
+            { name: 'IT-Training', description: 'Trainertätigkeiten.', technologies: [] },
+            { name: 'Grafikdesign', description: 'Diverse Grafikaufträge.', technologies: ['Photoshop', 'Illustrator'] },
+          ],
         },
       ],
     },
     skills: {
-      heading: 'Technische Kompetenzen',
+      heading: 'Kompetenzen',
       cards: [
         {
           title: 'Backend-Entwicklung',
           description:
-            'Expertise im Aufbau skalierbarer APIs und Microservices-Architektur',
+            'PHP, Symfony, Laravel und Go für robuste Server-Anwendungen und REST-APIs',
         },
         {
-          title: 'Datenbankdesign',
+          title: 'Datenbanken',
           description:
-            'Erfahrung mit SQL- und NoSQL-Datenbanken sowie Optimierungsexpertise',
+            'SQL und PostgreSQL – Datenbankdesign, -optimierung und komplexe Abfragen',
         },
         {
-          title: 'Cloud-Infrastruktur',
-          description: 'Erfahrung mit AWS, Azure und Google Cloud Plattformen',
+          title: 'Frontend & Design',
+          description:
+            'JavaScript, CSS und HTML sowie Grafiktools wie Photoshop und Illustrator',
         },
         {
-          title: 'Systemarchitektur',
-          description: 'Design robuster und wartbarer verteilter Systeme',
+          title: 'DevOps & Tooling',
+          description:
+            'Docker, Git und Composer für effiziente Entwicklungs- und Deployment-Prozesse',
         },
+      ],
+    },
+    diverses: {
+      heading: 'Diverses',
+      items: [
+        { emoji: '🎵', label: 'Musikliebhaber (Punkrock)' },
+        { emoji: '🏍️', label: 'Zweiradfanatiker (mit Motor)' },
+        { emoji: '🖤', label: 'Tattoosammler' },
       ],
     },
     contact: {
@@ -172,8 +204,9 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: 'Home',
       about: 'About',
-      projects: 'Projects',
+      projects: 'Career',
       skills: 'Skills',
+      diverses: 'Interests',
       contact: 'Contact',
     },
     home: {
@@ -197,6 +230,7 @@ export const translations: Record<Language, Translations> = {
           'Backend Development',
           'System Architecture',
           'Database Design',
+          'Cloud Infrastructure',
         ],
       },
       expertise: {
@@ -209,52 +243,71 @@ export const translations: Record<Language, Translations> = {
       availability: 'Open to opportunities',
     },
     projects: {
-      heading: 'Projects',
+      heading: 'Career',
       items: [
         {
-          title: 'E-Commerce Platform',
-          description:
-            'Backend and development for large-scale e-commerce platform handling 1M+ daily transactions',
-          technologies: ['Node.js', 'PostgreSQL', 'Redis', 'Kubernetes'],
-          impact: 'Improved system performance by 300%',
+          company: 'E-Kontor24 / Skon AG',
+          period: '07.2018 – present',
+          role: 'Backend Developer',
+          projects: [
+            { name: 'praemienkontor.de – REST API', description: 'Developed a backend API based on Symfony. Optimized existing systems.', technologies: ['Symfony', 'PHP', 'PostgreSQL', 'Docker'] },
+            { name: 'Point of Sale Tool', description: 'Developed and conceptualized a backend API in Go Lang.', technologies: ['Go', 'PostgreSQL', 'Docker'] },
+            { name: 'Internal Tracking Tool', description: 'Developed and conceptualized a backend API based on Laravel.', technologies: ['Laravel', 'PHP', 'MySQL', 'Docker'] },
+          ],
         },
         {
-          title: 'Payment Processing System',
-          description:
-            'Microservices architecture for secure payment processing with real-time fraud detection',
-          technologies: ['Java', 'Spring Boot', 'Apache Kafka', 'MongoDB'],
-          impact: 'Processed over €50M in transactions',
+          company: 'Body Attack Sports Nutrition',
+          period: '07.2012 – 07.2018',
+          role: 'Web Developer',
+          projects: [
+            { name: 'body-attack.de Online Shop', description: 'Developed and conceptualized the shop and CMS in PHP, HTML, CSS.', technologies: ['PHP', 'HTML', 'CSS', 'MySQL'] },
+            { name: 'Intranet', description: 'Developed and conceptualized the intranet in ColdFusion.', technologies: ['ColdFusion'] },
+            { name: 'Warehouse Management Software', description: 'Developed and conceptualized warehouse-management and logistic-system in PHP.', technologies: ['PHP', 'MySQL'] },
+          ],
         },
         {
-          title: 'Cloud Migration Initiative',
-          description:
-            'Led migration of legacy systems to cloud infrastructure with zero downtime deployment strategy',
-          technologies: ['AWS', 'Docker', 'Terraform', 'Jenkins'],
-          impact: 'Reduced infrastructure costs by 40%',
+          company: 'Freelance',
+          period: '2006 – 06.2012',
+          role: 'Web Developer & IT Trainer',
+          projects: [
+            { name: 'Web Development', description: 'Website conception and development.', technologies: ['PHP', 'HTML', 'CSS'] },
+            { name: 'IT Training', description: 'Training activities.', technologies: [] },
+            { name: 'Graphic Design', description: 'Various graphic design projects.', technologies: ['Photoshop', 'Illustrator'] },
+          ],
         },
       ],
     },
     skills: {
-      heading: 'Technical Skills',
+      heading: 'Skills',
       cards: [
         {
           title: 'Backend Development',
           description:
-            'Expertise in building scalable APIs and microservices architecture',
+            'PHP, Symfony, Laravel and Go for robust server applications and REST APIs',
         },
         {
-          title: 'Database Design',
+          title: 'Databases',
           description:
-            'Proficient in SQL and NoSQL databases with optimization expertise',
+            'SQL and PostgreSQL – database design, optimization and complex queries',
         },
         {
-          title: 'Cloud Infrastructure',
-          description: 'Experience with AWS, Azure, and Google Cloud platforms',
+          title: 'Frontend & Design',
+          description:
+            'JavaScript, CSS and HTML plus design tools like Photoshop and Illustrator',
         },
         {
-          title: 'System Architecture',
-          description: 'Designing robust and maintainable distributed systems',
+          title: 'DevOps & Tooling',
+          description:
+            'Docker, Git and Composer for efficient development and deployment processes',
         },
+      ],
+    },
+    diverses: {
+      heading: 'Interests',
+      items: [
+        { emoji: '🎵', label: 'Music Enthusiast (Punkrock)' },
+        { emoji: '🏍️', label: 'Bike Enthusiast (with motor)' },
+        { emoji: '🖤', label: 'Tattoo Collector' },
       ],
     },
     contact: {
