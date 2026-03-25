@@ -105,11 +105,21 @@ function App() {
       </nav>
 
       <section id="home" className={styles.homeSection}>
+        <video
+          className={styles.homeBgVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/videos/scrollingcode.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.homeBgOverlay} />
         <div className={styles.sectionContainer}>
           <div className={styles.homeGrid}>
             <div>
               <h1 className={styles.homeTitle}>
-                {t.home.greeting} {t.home.name.split(' ')[0]}<br />{t.home.name.split(' ')[1]}
+                {t.home.greeting} {t.home.name}
               </h1>
               <h2 className={styles.homeSubtitle}>
                 {t.home.title}
@@ -137,13 +147,11 @@ function App() {
 
             <div className={styles.imageContainer}>
               <div className={styles.imageWrapper}>
-                <div className={styles.imageInner}>
-                  <div
-                    className={styles.imageFrame}
-                    style={{ backgroundImage: 'url(/public/images/jens-wodrich-2024.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
-                  >
-                  </div>
-                </div>
+                <img
+                  src="/images/jens-wodrich-2024.png"
+                  alt={t.home.photoAlt}
+                  className={styles.profileImage}
+                />
               </div>
             </div>
           </div>
@@ -319,6 +327,17 @@ function App() {
             >
               <Linkedin size={20} />
               {t.contact.linkedin}
+            </a>
+            <a
+              href="https://www.xing.com/profile/Jens_Wodrich/cv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.contactLink} ${styles.contactLinkXing}`}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.93c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.08.346.02.537l2.36 4.073c.003.011.003.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.25.22.465.22h3.445c.517 0 .75-.328.937-.657l3.744-6.484-2.386-4.155c-.172-.315-.434-.664-.962-.664H3.648v.001z" />
+              </svg>
+              {t.contact.xing}
             </a>
             <a
               href="https://github.com"

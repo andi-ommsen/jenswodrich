@@ -68,6 +68,7 @@ interface Translations {
     subtitle: string;
     email: string;
     linkedin: string;
+    xing: string;
     github: string;
     codeComment: string;
   };
@@ -193,6 +194,7 @@ export const translations: Record<Language, Translations> = {
         'Interesse an einer Zusammenarbeit? Lassen Sie uns verbinden und besprechen, wie ich bei Ihrem Projekt helfen kann.',
       email: 'E-Mail senden',
       linkedin: 'LinkedIn',
+      xing: 'Xing',
       github: 'GitHub',
       codeComment: '// Kontaktieren Sie mich gerne!',
     },
@@ -316,6 +318,7 @@ export const translations: Record<Language, Translations> = {
         "Interested in working together? Let's connect and discuss how I can help with your project.",
       email: 'Email Me',
       linkedin: 'LinkedIn',
+      xing: 'Xing',
       github: 'GitHub',
       codeComment: '// Feel free to reach out!',
     },
