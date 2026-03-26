@@ -386,8 +386,9 @@
 }
 
 .imageWrapper {
-  width: min(35rem, 90vw);
-  height: min(25rem, 64vw);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 35 / 25;
   border-radius: 1.625rem;
   padding: 4px;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
@@ -395,6 +396,14 @@
   box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.35);
   opacity: 0;
   animation: fadeInUp 0.7s ease 0.55s forwards, gradientBorder 4s linear 1.25s infinite, float 5s ease-in-out 1.25s infinite;
+}
+
+@media (min-width: 768px) {
+  .imageWrapper {
+    width: 35rem;
+    height: 25rem;
+    aspect-ratio: unset;
+  }
 }
 
 .profileImage {
