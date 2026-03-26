@@ -386,8 +386,8 @@
 }
 
 .imageWrapper {
-  width: 35rem;
-  height: 25rem;
+  width: min(35rem, 90vw);
+  height: min(25rem, 64vw);
   border-radius: 1.625rem;
   padding: 4px;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
