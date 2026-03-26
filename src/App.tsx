@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText, User, Briefcase, Wrench } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Code2, Database, Server, Globe, Languages, FileText, User, Briefcase, Wrench, Heart } from 'lucide-react';
 import { translations, Language } from './translations';
 import styles from './App.module.css';
 
@@ -291,13 +291,14 @@ function App() {
       <section id="diverses" className={styles.diversesSection}>
         <div className={styles.sectionContainer}>
           <h2 className={styles.sectionHeading}>
+            <Heart size={40} className="text-blue-600" />
             {t.diverses.heading}
           </h2>
           <div className={styles.diversesGrid}>
             {t.diverses.items.map((item, index) => (
               <div key={index} className={styles.diversesItem}>
-                <span className={styles.diversesEmoji}>{item.emoji}</span>
-                <span>{item.label}</span>
+                <span className={styles.diversesLabel}>{item.label}</span>
+                <p className={styles.diversesDescription}>{item.description}</p>
               </div>
             ))}
           </div>

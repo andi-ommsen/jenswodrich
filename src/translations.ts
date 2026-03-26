@@ -59,8 +59,8 @@ interface Translations {
   diverses: {
     heading: string;
     items: Array<{
-      emoji: string;
       label: string;
+      description: string;
     }>;
   };
   contact: {
@@ -92,7 +92,7 @@ export const translations: Record<Language, Translations> = {
       name: 'Jens Wodrich.',
       title: 'Software Entwickler',
       description:
-        'Ich bin ein erfahrener Software-Ingenieur, der sich auf die Entwicklung skalierbarer und zuverlässiger Backend-Systeme konzentriert. Programmieren ist lebenslanges Lernen. Diese Aussage bildet für mich gleichzeitig die Freude und den Schmerz an meiner Berufung ab. Ich könnte mir nichts Besseres vorstellen.',
+        'Ich bin ein erfahrener Software-Entwickler, der sich auf die Entwicklung skalierbarer und zuverlässiger Backend-Systeme konzentriert. Programmieren ist lebenslanges Lernen. Diese Aussage bildet für mich gleichzeitig die Freude und die Herausforderung an meinem Beruf ab. Ich könnte mir nichts Besseres vorstellen.',
       cta: 'Kontakt aufnehmen',
       cvDownload: 'Lebenslauf herunterladen',
       photoAlt: 'Professionelles Foto',
@@ -113,7 +113,7 @@ export const translations: Record<Language, Translations> = {
       },
       expertise: {
         languages: ['PHP', 'Go', 'JavaScript'],
-        technologies: ['Symfony','Laravel','PostgreSQL','Docker'],
+        technologies: ['Symfony', 'Laravel', 'PostgreSQL', 'Docker'],
         clouds: ['Google Cloud'],
         methodologies: ['Agile', 'Microservices', 'CI/CD'],
       },
@@ -124,7 +124,7 @@ export const translations: Record<Language, Translations> = {
       heading: 'Berufliche Stationen',
       items: [
         {
-          company: 'E-Kontor24 / Skon AG',
+          company: 'E-Kontor24 / S-kon AG',
           period: '07.2018 – heute',
           role: 'Backendentwickler',
           projects: [
@@ -183,15 +183,15 @@ export const translations: Record<Language, Translations> = {
     diverses: {
       heading: 'Diverses',
       items: [
-        { emoji: '🎵', label: 'Musikliebhaber (Punkrock)' },
-        { emoji: '🏍️', label: 'Zweiradfanatiker (mit Motor)' },
-        { emoji: '🖤', label: 'Tattoosammler' },
+        { label: 'Musikliebhaber', description: 'Punkrock ist meine Leidenschaft – von den Ramones bis zur lokalen Szene.' },
+        { label: 'Zweiradfanatiker', description: 'Nichts geht über eine Tour auf zwei motorisierten Rädern.' },
+        { label: 'Tattooliebhaber', description: 'Jedes Tattoo erzählt eine Geschichte.' },
       ],
     },
     contact: {
       heading: 'Kontakt aufnehmen',
       subtitle:
-        'Interesse an einer Zusammenarbeit? Lassen Sie uns verbinden und besprechen, wie ich bei Ihrem Projekt helfen kann.',
+        'Sie suchen einen erfahrenen Backend-Entwickler, der sich schnell einfindet und langfristig Verantwortung übernimmt? Ich freue mich auf Ihre Nachricht.',
       email: 'E-Mail senden',
       linkedin: 'LinkedIn',
       xing: 'Xing',
@@ -216,7 +216,7 @@ export const translations: Record<Language, Translations> = {
       name: 'Jens Wodrich.',
       title: 'Software Engineer',
       description:
-        "I'm an experienced software engineer focused on building scalable and reliable backend systems. Programming is lifelong learning. This statement reflects both the joy and the pain of my vocation for me. I couldn't imagine anything better.",
+        "I'm an experienced software developer focused on building scalable and reliable backend systems. Programming is lifelong learning. This statement reflects both the joy and the pain of my vocation for me. I couldn't imagine anything better.",
       cta: 'Get In Touch',
       cvDownload: 'Download CV',
       photoAlt: 'Professional Photo',
@@ -237,7 +237,7 @@ export const translations: Record<Language, Translations> = {
       },
       expertise: {
         languages: ['PHP', 'Go', 'JavaScript'],
-        technologies: ['Symfony','Laravel','PostgreSQL','Docker'],
+        technologies: ['Symfony', 'Laravel', 'PostgreSQL', 'Docker'],
         clouds: ['Google Cloud'],
         methodologies: ['Agile', 'Microservices', 'CI/CD'],
       },
@@ -248,7 +248,7 @@ export const translations: Record<Language, Translations> = {
       heading: 'Career',
       items: [
         {
-          company: 'E-Kontor24 / Skon AG',
+          company: 'E-Kontor24 / S-kon AG',
           period: '07.2018 – present',
           role: 'Backend Developer',
           projects: [
@@ -307,15 +307,15 @@ export const translations: Record<Language, Translations> = {
     diverses: {
       heading: 'Interests',
       items: [
-        { emoji: '🎵', label: 'Music Enthusiast (Punkrock)' },
-        { emoji: '🏍️', label: 'Bike Enthusiast (with motor)' },
-        { emoji: '🖤', label: 'Tattoo Collector' },
+        { label: 'Music Enthusiast', description: 'Punkrock is my passion – from the Ramones to the local scene.' },
+        { label: 'Motorbike Fanatic', description: 'Nothing beats a ride on two motorized wheels.' },
+        { label: 'Tattoo Lover', description: 'Every tattoo tells a story.' },
       ],
     },
     contact: {
       heading: 'Get In Touch',
       subtitle:
-        "Interested in working together? Let's connect and discuss how I can help with your project.",
+        "Looking for an experienced backend developer who hits the ground running and takes ownership? Feel free to get in touch.",
       email: 'Email Me',
       linkedin: 'LinkedIn',
       xing: 'Xing',
