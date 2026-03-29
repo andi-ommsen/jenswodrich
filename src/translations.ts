@@ -92,7 +92,7 @@ export const translations: Record<Language, Translations> = {
       name: 'Jens Wodrich.',
       title: 'Software Entwickler',
       description:
-        'Ich bin ein erfahrener Software-Entwickler, der sich auf die Entwicklung skalierbarer und zuverlässiger Backend-Systeme konzentriert. Programmieren ist lebenslanges Lernen. Diese Aussage bildet für mich gleichzeitig die Freude und die Herausforderung an meinem Beruf ab. Ich könnte mir nichts Besseres vorstellen.',
+        'Ich bin Softwareentwickler aus Leidenschaft und baue robuste und skalierbare Backend-Systeme. Programmieren bedeutet für mich vor allem: Lebenslanges Lernen, Herausforderungen annehmen und Lösungen finden. Ich könnte mir nichts Besseres als Beruf vorstellen.',
       cta: 'Kontakt aufnehmen',
       cvDownload: 'Lebenslauf herunterladen',
       photoAlt: 'Professionelles Foto',
@@ -183,9 +183,9 @@ export const translations: Record<Language, Translations> = {
     diverses: {
       heading: 'Diverses',
       items: [
-        { label: 'Musikliebhaber', description: 'Punkrock ist meine Leidenschaft – von den Ramones bis zur lokalen Szene.' },
-        { label: 'Zweiradfanatiker', description: 'Nichts geht über eine Tour auf zwei motorisierten Rädern.' },
-        { label: 'Tattooliebhaber', description: 'Jedes Tattoo erzählt eine Geschichte.' },
+        { label: 'Musikliebhaber', description: 'Punkrock ist meine Passion – von der lokalen Szene bis zu großen Festivals. Punkrock ist ein Lebensgefühl und eine Einstellung.' },
+        { label: 'Zweiradfanatiker', description: 'Von der alten Vespa, über die Chopper bis zur Reiseenduro fahre ich alles was zwei Räder hat. Motorradfahren ist eine Passion und Freiheit pur.' },
+        { label: 'Tattooliebhaber', description: 'Mit 17 das erste Tattoo. Tattoos sind für mich eine Art mich auszudrücken und meine Geschichte zu erzählen' },
       ],
     },
     contact: {
@@ -216,7 +216,7 @@ export const translations: Record<Language, Translations> = {
       name: 'Jens Wodrich.',
       title: 'Software Engineer',
       description:
-        "I'm an experienced software developer focused on building scalable and reliable backend systems. Programming is lifelong learning. This statement reflects both the joy and the pain of my vocation for me. I couldn't imagine anything better.",
+        "I am a software developer by passion and build robust and scalable backend systems. To me, programming means above all: lifelong learning, embracing challenges, and finding solutions. I couldn't imagine a better profession.",
       cta: 'Get In Touch',
       cvDownload: 'Download CV',
       photoAlt: 'Professional Photo',
@@ -307,9 +307,9 @@ export const translations: Record<Language, Translations> = {
     diverses: {
       heading: 'Interests',
       items: [
-        { label: 'Music Enthusiast', description: 'Punkrock is my passion – from the Ramones to the local scene.' },
-        { label: 'Motorbike Fanatic', description: 'Nothing beats a ride on two motorized wheels.' },
-        { label: 'Tattoo Lover', description: 'Every tattoo tells a story.' },
+        { label: 'Music Enthusiast', description: 'Punk rock is my passion – from the local scene to major festivals. Punk rock is a way of life and an attitude.' },
+        { label: 'Motorbike Fanatic', description: 'From old Vespas to choppers and adventure bikes – I ride anything with two wheels. Motorcycling is a passion and pure freedom.' },
+        { label: 'Tattoo Lover', description: 'I got my first tattoo at 17. For me, tattoos are a way to express myself and tell my story.' },
       ],
     },
     contact: {
