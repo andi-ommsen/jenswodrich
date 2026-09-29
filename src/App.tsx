@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type MouseEvent } from 'react';
 import { Menu, X, ArrowUpRight, ArrowDown, FileText, MapPin } from 'lucide-react';
 import { translations, Language } from './translations';
 import styles from './App.module.css';
 const sections = ['home', 'about', 'projects', 'skills', 'diverses', 'contact'] as const;
 type Section = (typeof sections)[number];
 const titleAnimationFrames = ['·', '··', '···'] as const;
+const emailParts = ['info', 'jenswodrich', 'de'] as const;
 
 function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -95,6 +96,13 @@ function App() {
         setIsMenuOpen(false);
     };
     const heading = (number: string, title: string) => <div className={styles.sectionHeading}><span className={styles.sectionNumber}>{number} /</span><h2>{title}</h2></div>;
+    const handleEmailClick = (event: MouseEvent<HTMLAnchorElement>) => {
+        const link = event.currentTarget;
+        link.href = `mailto:${emailParts[0]}@${emailParts[1]}.${emailParts[2]}`;
+        window.setTimeout(() => {
+            link.href = 'mailto:';
+        }, 0);
+    };
     return (<div className={styles.container}>
       <a className={styles.skipLink} href="#main">{de ? 'Zum Inhalt' : 'Skip to content'}</a>
       <header className={styles.header}>
@@ -153,8 +161,8 @@ function App() {
         </section>
 
         <section id="contact" className={styles.contactSection}>
-          <div className={styles.contactInner}><div><p className={styles.contactComment}>{t.contact.codeComment}</p><h2>{t.contact.heading}<span aria-hidden="true">.</span></h2><p className={styles.contactSubtitle}>{t.contact.subtitle}</p><a href="mailto:info@jenswodrich.de" className={styles.email}>{t.contact.email}<ArrowUpRight /></a><div className={styles.socials}><a href="https://www.linkedin.com/in/jens-wodrich-3446a7102/" target="_blank" rel="noopener noreferrer">{t.contact.linkedin}<ArrowUpRight size={15}/></a><a href="https://www.xing.com/profile/Jens_Wodrich/cv" target="_blank" rel="noopener noreferrer">{t.contact.xing}<ArrowUpRight size={15}/></a></div></div><div className={styles.contactCode}><span className={styles.mono}>contact.ts</span><pre><code>{`const contact = {
-  email: "info@jenswodrich.de",
+          <div className={styles.contactInner}><div><p className={styles.contactComment}>{t.contact.codeComment}</p><h2>{t.contact.heading}<span aria-hidden="true">.</span></h2><p className={styles.contactSubtitle}>{t.contact.subtitle}</p><a href="mailto:" onClick={handleEmailClick} className={styles.email}>{t.contact.email}<ArrowUpRight /></a><div className={styles.socials}><a href="https://www.linkedin.com/in/jens-wodrich-3446a7102/" target="_blank" rel="noopener noreferrer">{t.contact.linkedin}<ArrowUpRight size={15}/></a><a href="https://www.xing.com/profile/Jens_Wodrich/cv" target="_blank" rel="noopener noreferrer">{t.contact.xing}<ArrowUpRight size={15}/></a></div></div><div className={styles.contactCode}><span className={styles.mono}>contact.ts</span><pre><code>{`const contact = {
+  email: "info [at] jenswodrich [dot] de",
   location: "${t.about.location}",
   available: true,
   preferredContact: "email"
