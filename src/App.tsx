@@ -1,13 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowUpRight, ArrowDown, FileText, MapPin } from 'lucide-react';
 import { translations, Language } from './translations';
 import styles from './App.module.css';
 const sections = ['home', 'about', 'projects', 'skills', 'diverses', 'contact'] as const;
+type Section = (typeof sections)[number];
+const titleAnimationFrames = ['·', '··', '···'] as const;
+
 function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('home');
+    const [activeSection, setActiveSection] = useState<Section>('home');
     const [language, setLanguage] = useState<Language>('de');
     const [showJson, setShowJson] = useState(false);
+    const navigationTarget = useRef<Section | null>(null);
+    const scrollEndTimeout = useRef<number | undefined>(undefined);
     const t = translations[language];
     const de = language === 'de';
     const profile = { name: t.about.name, role: t.about.role, location: t.about.location,
@@ -15,7 +20,44 @@ function App() {
         passion: t.about.passion, availability: t.about.availability };
     useEffect(() => { document.documentElement.lang = language; }, [language]);
     useEffect(() => {
+        const sectionTitle = t.nav[activeSection];
+        const finalTitle = `${sectionTitle} | Jens Wodrich`;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.title = finalTitle;
+            return;
+        }
+
+        let frame = 0;
+        document.title = `${sectionTitle} ${titleAnimationFrames[frame]} Jens Wodrich`;
+        const intervalId = window.setInterval(() => {
+            frame += 1;
+            if (frame < titleAnimationFrames.length) {
+                document.title = `${sectionTitle} ${titleAnimationFrames[frame]} Jens Wodrich`;
+                return;
+            }
+
+            document.title = finalTitle;
+            window.clearInterval(intervalId);
+        }, 120);
+
+        return () => window.clearInterval(intervalId);
+    }, [activeSection, t.nav]);
+    useEffect(() => {
         const handleScroll = () => {
+            if (navigationTarget.current) {
+                window.clearTimeout(scrollEndTimeout.current);
+                scrollEndTimeout.current = window.setTimeout(() => {
+                    navigationTarget.current = null;
+                }, 150);
+                return;
+            }
+
+            if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1) {
+                setActiveSection(sections[sections.length - 1]);
+                return;
+            }
+
             const position = window.scrollY + window.innerHeight / 3;
             for (const section of [...sections].reverse()) {
                 const element = document.getElementById(section);
@@ -27,7 +69,10 @@ function App() {
         };
         handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.clearTimeout(scrollEndTimeout.current);
+        };
     }, []);
     useEffect(() => {
         const escape = (event: KeyboardEvent) => {
@@ -40,6 +85,15 @@ function App() {
             window.addEventListener('keydown', escape);
         return () => window.removeEventListener('keydown', escape);
     }, [isMenuOpen]);
+    const selectSection = (section: Section) => {
+        window.clearTimeout(scrollEndTimeout.current);
+        navigationTarget.current = section;
+        scrollEndTimeout.current = window.setTimeout(() => {
+            navigationTarget.current = null;
+        }, 150);
+        setActiveSection(section);
+        setIsMenuOpen(false);
+    };
     const heading = (number: string, title: string) => <div className={styles.sectionHeading}><span className={styles.sectionNumber}>{number} /</span><h2>{title}</h2></div>;
     return (<div className={styles.container}>
       <a className={styles.skipLink} href="#main">{de ? 'Zum Inhalt' : 'Skip to content'}</a>
@@ -47,7 +101,7 @@ function App() {
         <div className={styles.navContainer}>
           <a href="#home" className={styles.logo} aria-label="jenswodrich.de"><span className={styles.monogram}>jw<span>.</span></span><span className={styles.wordmark}>jenswodrich.de</span></a>
           <nav id="navigation" aria-label={de ? 'Hauptnavigation' : 'Main navigation'} className={`${styles.navigation} ${isMenuOpen ? styles.navigationOpen : ''}`}>
-            {sections.map(section => <a key={section} href={`#${section}`} onClick={() => setIsMenuOpen(false)} aria-current={activeSection === section ? 'location' : undefined}>{t.nav[section]}</a>)}
+            {sections.map(section => <a key={section} href={`#${section}`} onClick={() => selectSection(section)} aria-current={activeSection === section ? 'location' : undefined}>{t.nav[section]}</a>)}
           </nav>
           <div className={styles.controls}>
             <button className={styles.languageButton} onClick={() => setLanguage(de ? 'en' : 'de')} aria-label={de ? 'Switch to English' : 'Auf Deutsch wechseln'}><span className={de ? styles.selectedLanguage : ''}>DE</span><span aria-hidden="true">/</span><span className={!de ? styles.selectedLanguage : ''}>EN</span></button>
